@@ -1,57 +1,84 @@
-# UAS-DTU Round 2 – Search and Rescue Task
+# UAS-DTU Round 2 — Search and Rescue Task
 
-Name: Aksh Aggarwal
-Roll No: 25/A01/023
+**Author:** Aksh Aggarwal  
+**Roll No:** 25/A01/023
 
-This project implements the UAS-DTU Round 2 task using Python and OpenCV. The objective is to analyze aerial images from a shipwreck scenario, segment background regions, detect casualties and rescue camps, and assign casualties to camps based on priority and distance.
+---
 
-Task Overview
+## Project Summary
 
-Segment ocean and land regions from the image
+This project implements the UAS-DTU Round 2 Search and Rescue task using Python and OpenCV. The objective is to analyze aerial images from a shipwreck scenario to:
 
-Detect casualties using shape and color
+- Segment ocean and land regions
+- Detect casualties and rescue camps
+- Assign casualties to camps based on priority and distance
+- Compute priorities and rescue ratios
+- Rank images by rescue ratio
 
-Detect rescue camps (circles)
+---
 
-Assign casualties to camps based on priority score and distance
+## Task Overview
 
-Compute total priority for each camp
+For each input image the system performs the following steps:
 
-Calculate rescue ratio for each image
+1. Segment ocean and land regions from the image.
+2. Detect casualties using shape and color information.
+3. Detect rescue camps (circular markers).
+4. Assign casualties to camps based on a computed priority score and distance.
+5. Compute the total priority for each camp.
+6. Calculate the rescue ratio for the image.
+7. Rank all images based on rescue ratio (descending).
 
-Rank images based on rescue ratio
+---
 
-Priority Rules
+## Priority Rules
 
-Star = 3, Triangle = 2, Square = 1
+- Shape priority (age proxy):
+  - Star = 3
+  - Triangle = 2
+  - Square = 1
+- Emergency priority (color):
+  - Red = 3
+  - Yellow = 2
+  - Green = 1
+- Camp capacities:
+  - Blue = 4
+  - Pink = 3
+  - Grey = 2
 
-Red = 3, Yellow = 2, Green = 1
+Priority score for a casualty:
+- Priority Score = (age priority × emergency priority)
 
-Camp capacities: Blue = 4, Pink = 3, Grey = 2
+Assignment goal:
+- Place casualties into camps respecting capacities while maximizing total priority handled.
 
-Priority Score = (age priority × emergency priority)
+---
 
-Output
+## Output Format
 
-For each image:
+For each image the algorithm produces:
 
-[ blue_list , pink_list , grey_list ]
-[ priority_blue , priority_pink , priority_grey ]
-priority_ratio
+- Lists of assigned casualty IDs per camp:
+  - [ blue_list , pink_list , grey_list ]
+- Total priority per camp:
+  - [ priority_blue , priority_pink , priority_grey ]
+- Rescue ratio for the image (single numeric value)
 
+Final output (across all images):
+- A list of image file names sorted by rescue ratio (descending).
 
-Final output:
+---
 
-List of image names sorted by rescue ratio (descending)
+## Technologies
 
-Technologies
+- Python
+- OpenCV
+- NumPy
 
-Python
+---
 
-OpenCV
+## Conclusion
 
-NumPy
+This project demonstrates image segmentation, feature detection, and priority-based decision-making for a Search and Rescue scenario using aerial imagery. The implemented pipeline segments regions, detects casualties and camps, computes priorities, and ranks images according to rescue effectiveness.
 
-Conclusion
-
-This project demonstrates image segmentation, feature detection, and priority-based decision making for a Search and Rescue scenario.
+---
