@@ -1,4 +1,4 @@
-# UAS-DTU Round 2 — Search and Rescue Task
+# Search and Rescue Task
 
 **Author:** Aksh Aggarwal  
 **Roll No:** 25/A01/023
